@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ./inc/inc.head.ejs %>
+</head>
+<body>
+<% include ./mod/mod.head.ejs %>
+<form action="/api/pay" method="post" class="u-fm j-form">
+    <div class="msg msg-warn" id="msg"></div>
+    <div class="u-fm-i"><i class="u-fm-key">num</i><input type="text" name="num" style="width: 260px;" allow='{"require": 1, "title": "num"}'/></div>
+
+    <div class="u-fm-i u-fm-btn">
+        <input class="u-fm-smt" type="submit" value="确定" />
+        <a href="javascript://" class="u-btn u-b-orange u-b-big j-submit">确定</a>
+
+    </div>
+</form>
+<% include ./mod/mod.foot.ejs %>
+</body>
+<% include ./inc/inc.foot.ejs %>
+<script>
+    $(function(){
+        $('.j-form').data('opt', {
+            hideText: 1,
+            fn: function(){
+                window.location.href = '/';
+            }
+        });
+    })
+</script>
+</html>

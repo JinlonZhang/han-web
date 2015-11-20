@@ -1,0 +1,11 @@
+{
+    "onLine": 0,
+    "pwdSecret": "han",
+    "cookieSecret": "han",
+    "port": 5050,
+    "staticPath": "",
+    "staticVer": "",
+    "linkUrl": "http://www.baidu.com",
+
+    "numBase": 1000000
+}

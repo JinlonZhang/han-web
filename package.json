@@ -1,0 +1,33 @@
+{
+    "name": "han",
+    "version": "0.0.1",
+    "description": "han",
+    "author": "28652",
+    "dependencies": {
+        "body-parser": "~1.12.4",
+        "cookie-parser": "~1.3.5",
+        "express-session": "~1.7.2",
+        "connect-mongo": "*",
+        "debug": "~2.2.0",
+        "express": "4.12.4",
+        "ejs": "2.3.2",
+        "morgan": "1.5.3",
+        "serve-favicon": "2.2.1",
+        "underscore": "1.8.3",
+        "moment": "*",
+        "xss": "*",
+        "async": "*",
+        "cheerio": "*",
+        "node-uuid": "*",
+        "csurf": "*",
+        "shortid": "*"
+    },
+    "devDependencies": {
+        "gulp": "3.9.0",
+        "gulp-concat": "*",
+        "gulp-minify-css": "*",
+        "gulp-uglify": "*",
+        "gulp-zip": "*",
+        "amd-optimize": "0.5.0"
+    }
+}

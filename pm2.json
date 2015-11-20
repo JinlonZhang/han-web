@@ -1,0 +1,8 @@
+{
+  "name"       : "han",
+  "script"     : "bin/www.js",
+  "error_file" : "/data/pm2_log/han-err.log",
+  "out_file"   : "/data/pm2_log/han-out.log",
+  "pid_file"   : "/data/pm2_log/han.pid",
+  "exec_mode"  : "fork_mode"
+}

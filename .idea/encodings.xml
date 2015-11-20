@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/controller/reg.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/img/favicon.ico" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/public/page/error.ejs" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/public/page/login.ejs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/page/reg.ejs" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

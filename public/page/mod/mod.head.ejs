@@ -1,0 +1,66 @@
+<%
+var user = G.req.session.user;
+%>
+<style>
+    .usr-tp{position: relative;margin-left: 6px;}
+
+    a.usr-link{display:block;height: 100%!important;line-height: 38px!important;margin: 0!important;}
+    a.usr-link:hover{text-decoration: none;}
+    a.usr-link img{width: 30px;height: 30px;border-radius: 3px;vertical-align: middle;margin-right: 4px;}
+    .usr-nav-wp{height: 100px;width: 110px;background: #fff;}
+    .usr-nav-wp li{width:100%;height: 30px;line-height: 30px;margin-bottom: 5px;}
+    .usr-nav-wp li.line{height: 1px;line-height: 1px;margin-bottom: 4px;background: #ddd;}
+
+    a.usr-nav:link, a.usr-nav:active{display: block;border-radius: 2px;padding-left: 8px;}
+    a.usr-nav:hover{text-decoration: none;background: #369;color: #fff;}
+    a.usr-nav:hover i.ico{color: #fff;}
+</style>
+<div class="g-usr">
+    <div class="g-usr-in g-wp">
+        <ul class="g-tp g-tp-usr">
+            <% if(user){ %>
+                <li class="usr-tp j-pop" opt='{"trigger": "hover", "pos":"right"}'>
+
+                    <a class="f usr-link" href="/user/<%= user._id %>">
+                        <img src="<%= user.avatarUrl %>!50x50"/>
+                        <%= user.nick_name %>
+                        <i class="ico ico-angle-down ico-r"></i>
+                    </a>
+                    <a href="/pay" target="_blank" rel="nofollow"><%= user.rmb %></a>
+                    <div class="u-pop-child usr-nav-wp j-pop-box" style="height: 66px;">
+                        <ul>
+                            <li><a href="/user/<%= user._id %>/profile" class="usr-nav"><i class="ico ico-config ico-c-grey"></i>个人设置</a></li>
+                            <li><a href="/logout" rel="nofollow" class="usr-nav">退出</a></li>
+                        </ul>
+                    </div>
+                </li>
+            <% }else{ %>
+                <li><a href="javascript://" class="g-tp-a j-wbLogin f"><i class="ico ico-wb"></i>微博登录</a></li>
+                <li><a href="javascript://" class="g-tp-a j-qqLogin"><i class="ico ico-qq"></i>QQ登录</a></li>
+                <li><a class="g-tp-a" href="/login" rel="nofollow">登录</a></li>
+                <li><a class="g-tp-a" href="/reg" rel="nofollow">注册</a></li>
+
+            <% } %>
+        </ul>
+    </div>
+</div>
+
+<div class="g-hd" id="G_hd">
+
+    <div class="g-hd-in g-wp">
+        <div class="g-logo">
+            <a href="<%= G.linkUrl %>"><img src="/src/img/logo.png?_=20140920" alt=""/></a>
+        </div>
+    </div>
+</div>
+<%
+/*var catId = locals.categoryId || "";
+var t = URL.parse(G.req.url).pathname.split('/');
+var d = t[t.length - 1]*/
+    var catId = 'home';
+%>
+<div class="g-nav" id="G_nav">
+    <ul class="g-nav-in g-wp">
+        <li class="h"><a class="nav <%= catId == "home" ? 'now' : ''%>" href="<%= G.linkUrl %>">首页</a></li>
+    </ul>
+</div>

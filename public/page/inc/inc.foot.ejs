@@ -1,0 +1,30 @@
+
+<% if(G.onLine == 0){ %>
+    <script src="<%= G.staticPath %>/js/lib/jquery-1.11.3.min.js"></script>
+    <script src="<%= G.staticPath %>/js/lib/underscore.js"></script>
+    <script src="<%= G.staticPath %>/js/lib/backbone.js"></script>
+    <script src="<%= G.staticPath %>/js/lib/require.js"></script>
+
+    <script src="<%= G.staticPath %>/js/lib/jquery.serializeJSON.js"></script>
+    <script src="<%= G.staticPath %>/js/lib/backbone.sync.js"></script>
+<% }else if(G.onLine == 1){ %>
+    <script src="<%= G.staticPath %>/js/lib.min.js"></script>
+    <script src="<%= G.staticPath %>/js/app.min.js"></script>
+<% } %>
+
+<script>
+    requirejs.config({
+        baseUrl: '<%= G.staticPath %>/js',
+        config: {
+            moment: { noGlobal: true }
+        },
+        paths: {
+            "moment": "lib/moment-with-locales.min"
+        }
+    })
+    require(['app/bind', 'app/util'], function(bind, util){
+        bind.init({
+            sessionId: '<%= G.req.session.user && G.req.session.user._id %>'
+        });
+    });
+</script>
