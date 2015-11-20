@@ -12,6 +12,7 @@ var site = con.site;
 var reg = con.reg;
 var luck = con.luck;
 var pay = con.pay;
+var user = con.user;
 
 var auth = {};
 auth.api = {};
@@ -66,11 +67,16 @@ module.exports = function(app){
     app.get('/logout', site.logout);
     app.get('/pay', pay.index);
 
+    app.get('/user/:id', user.baseInfo, user.index);
+    app.get('/user/:id/luck', user.baseInfo, user.luck);
+
     app.post('/api/login', site.api.login);
     app.post('/api/reg', reg.api.reg);
 
     app.post('/api/luck', auth.login, luck.api.add);
     app.post('/api/pay', auth.login, pay.api.add);
+
+
 
     /**
      * get      /api/user 获取列表

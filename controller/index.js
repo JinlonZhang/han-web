@@ -7,7 +7,8 @@ var mod = {
     site: require('./site'),
     reg: require('./reg'),
     luck: require('./luck'),
-    pay: require('./pay')
+    pay: require('./pay'),
+    user: require('./user')
 };
 
 module.exports = mod;
