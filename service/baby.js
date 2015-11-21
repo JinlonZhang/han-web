@@ -28,23 +28,24 @@ _.extend(mod, {
     },
 
     luck: function(o, fn){
-        var w = this;
+        var w = this, baby = o.baby, luck = o.luck;
 
         async.auto({
             luckNum: function(fn){
-                Luck.getByQuery({baby_id: o._id, season: o.season}, {}, {sort: {date: -1}, limit: 50}, function(err, list){
+                Luck.getByQuery({date: {$lt: luck.date} }, {}, {sort: {date: -1}, limit: 50}, function(err, list){
                     var num = 0;
                     _.each(list, function(entry){
-                        var tmp = moment(entry.date).format('YYYYMMDDHHmmssSSS') * 1;
+                        console.log(entry.baby_id);
+                        var tmp = moment(entry.date).format('HHmmssSSS') * 1;
                         num = num + tmp;
                     });
 
-                    fn(err, num % o.price);
+                    fn(err, num % baby.price);
                 })
             },
             modify: ['luckNum', function(fn, d){
                 d.luckNum = d.luckNum + config.numBase + 1;
-                Luck.getByQuery({baby_id: o._id, season: o.season, number: d.luckNum}, {}, {}, function(err, list){
+                Luck.getByQuery({baby_id: baby._id, season: baby.season, number: d.luckNum}, {}, {}, function(err, list){
                     if(list.length > 0){
                         list[0].type = 1;
                         list[0].save(fn);
