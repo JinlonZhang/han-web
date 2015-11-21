@@ -8,6 +8,7 @@ var proxy = common.proxy;
 var Luck = proxy.luck;
 var Baby = proxy.baby;
 var User = proxy.user;
+var LuckGroup = proxy.luck_group;
 
 var service_baby = require('../service/baby');
 var _ = require('underscore');
@@ -73,6 +74,22 @@ _.extend(mod.api, {
                             d.baby.save(fn2);
                         },
                         luck: function(fn2){ Luck.add(o, fn2); },
+                        luckGroup: function(fn2){
+                            LuckGroup.getByOne(user_id, baby_id, d.baby.season, function(err, lg){
+                                if(lg == null){
+                                    var tmp = {
+                                        user_id: user_id, baby_id: baby_id, season: d.baby.season,
+                                        number_list: [o.number]
+                                    };
+                                    LuckGroup.add(tmp, fn2);
+                                }else{
+                                    lg.number_list.push(o.number);
+                                    lg.last_modify = new Date();
+                                    lg.save(fn2);
+                                }
+                            });
+
+                        },
                         user: function(fn2){ d.user.rmb--;d.user.save(fn2); }
                     }, function(err, d){
                         if(d.baby[0].price_need <= 0) {

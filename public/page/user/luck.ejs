@@ -11,7 +11,13 @@
 
         <div class="us-mn-all">
 
-            aaa
+            <% for(var i=0; i<list.length; i++){ %>
+            <div>
+                <%= list[i].baby_id %>
+                <%= list[i].season %>
+                <%= list[i].number_list %>
+            </div>
+            <% } %>
 
         </div>
     </div>

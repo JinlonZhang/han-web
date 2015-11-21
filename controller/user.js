@@ -7,6 +7,7 @@ var util = common.lib.util;
 var User = common.proxy.user;
 var Baby = common.proxy.baby;
 var Luck = common.proxy.luck;
+var LuckGroup = common.proxy.luck_group;
 
 var config = require('../config.json');
 var async = require('async');
@@ -27,8 +28,13 @@ _.extend(mod, {
     },
 
     luck: function(req, res){
+        var skip = req.query.skip || 0, limit = 20;
 
-        res.render('user/luck');
+        
+        LuckGroup.getByQuery({user_id: USER._id}, {}, {skip: skip, limit: limit}, function(err, list){
+            res.render('user/luck', {list: list});
+        });
+
     },
 
     win: function(req, res){
