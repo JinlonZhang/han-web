@@ -70,6 +70,7 @@ module.exports = function(app){
     app.get('/user/:id', user.baseInfo, user.index);
     app.get('/user/:id/luck', user.baseInfo, user.luck);
     app.get('/user/:id/win', user.baseInfo, user.win);
+    app.get('/user/:id/recharge', user.baseInfo, user.recharge);
 
     app.post('/api/login', site.api.login);
     app.post('/api/reg', reg.api.reg);

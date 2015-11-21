@@ -30,7 +30,8 @@ _.extend(mod, {
 
     luck: function(req, res){
         var query = {user_id: USER._id}, skip = req.query.skip || 0, limit = 20;
-
+        //res.render('user/luck', {list: [], total: 0});
+        //return;
         async.auto({
             list: function(fn){
                 LuckGroup.getByQuery(query, {}, {skip: skip, limit: limit}, fn);
@@ -46,7 +47,6 @@ _.extend(mod, {
             total: function(fn){
                 LuckGroup.getTotalByQuery(query, fn);
             }
-
         }, function(err, d){
             res.render('user/luck', {list: d.list, total: d.total});
         });
@@ -77,8 +77,11 @@ _.extend(mod, {
     },
 
     recharge: function(req, res){
+        var query = {user_id: USER._id}, skip = req.query.skip, limit = 20;
 
-        Rmb.getBy
+        Rmb.getByQuery(query, {}, {skip: skip, limit: limit}, function(err, list){
+            res.render('user/recharge', {list: list, total: 0})
+        })
 
     },
 

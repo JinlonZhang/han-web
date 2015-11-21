@@ -14,10 +14,10 @@
                 no data!
             <% } %>
             <% _.each(list, function(o){ %>
-            <div>
-                <%= o.num %>
-                <%= o.data %>
-            </div>
+                <div>
+                    <%= G.moment(o.date).format('YYYY-MM-DD HH:mm') %>
+                    <%= o.num %>
+                </div>
             <% }) %>
 
         </div>

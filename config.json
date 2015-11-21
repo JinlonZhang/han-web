@@ -5,7 +5,7 @@
     "port": 5050,
     "staticPath": "",
     "staticVer": "",
-    "linkUrl": "http://www.baidu.com",
+    "linkUrl": "http://127.0.0.1:5050",
 
     "numBase": 1000000
 }

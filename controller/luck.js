@@ -75,10 +75,10 @@ _.extend(mod.api, {
                         },
                         luck: function(fn2){ Luck.add(o, fn2); },
                         luckGroup: function(fn2){
-                            LuckGroup.getByOne(user_id, baby_id, d.baby.season, function(err, lg){
+                            LuckGroup.getByOne(user_id, baby_id, o.season, function(err, lg){
                                 if(lg == null){
                                     var tmp = {
-                                        user_id: user_id, baby_id: baby_id, season: d.baby.season,
+                                        user_id: user_id, baby_id: baby_id, season: o.season,
                                         number_list: [o.number]
                                     };
                                     LuckGroup.add(tmp, fn2);
@@ -103,6 +103,7 @@ _.extend(mod.api, {
                             fn1(err, {rmbOut: 1});
                             return;
                         }
+                        req.session.user = d.user[0];
                         fn1(err);
                     });
                 }, fn);
