@@ -11,7 +11,7 @@
 <% _.each(list, function(o){ %>
     season=<%= o.season %>
     <%= o.name %>
-    <%= o.price_now %>
+    <%= o.price_now %>/<%= o.price %>
     <a class="j-luck" data-url="/api/luck?id=<%= o._id %>&num=1" href="javascript://">link</a>
 <% }) %>
 

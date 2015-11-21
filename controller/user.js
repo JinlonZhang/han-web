@@ -8,6 +8,7 @@ var User = common.proxy.user;
 var Baby = common.proxy.baby;
 var Luck = common.proxy.luck;
 var LuckGroup = common.proxy.luck_group;
+var Rmb = common.proxy.rmb;
 
 var config = require('../config.json');
 var async = require('async');
@@ -28,18 +29,57 @@ _.extend(mod, {
     },
 
     luck: function(req, res){
-        var skip = req.query.skip || 0, limit = 20;
+        var query = {user_id: USER._id}, skip = req.query.skip || 0, limit = 20;
 
-        
-        LuckGroup.getByQuery({user_id: USER._id}, {}, {skip: skip, limit: limit}, function(err, list){
-            res.render('user/luck', {list: list});
+        async.auto({
+            list: function(fn){
+                LuckGroup.getByQuery(query, {}, {skip: skip, limit: limit}, fn);
+            },
+            babyDetail: ['list', function(fn, d){
+                async.each(d.list, function(item ,fn2){
+                    Baby.getById(item.baby_id, {name: 1, season: 1, price: 1, cover: 1}, function(err2, baby){
+                        item.baby = baby;
+                        fn2(err2);
+                    })
+                }, fn);
+            }],
+            total: function(fn){
+                LuckGroup.getTotalByQuery(query, fn);
+            }
+
+        }, function(err, d){
+            res.render('user/luck', {list: d.list, total: d.total});
         });
 
     },
 
     win: function(req, res){
+        var query = {user_id: USER._id, type: 1}, skip = req.query.skip || 0, limit = 20;
 
-        res.render('user/win');
+        async.auto({
+            list: function(fn){
+                Luck.getByQuery(query, {}, {skip: skip, limit: limit}, fn);
+            },
+            babyDetail: ['list', function(fn, d){
+                async.each(d.list, function(item ,fn2){
+                    Baby.getById(item.baby_id, {name: 1, season: 1, price: 1, cover: 1}, function(err2, baby){
+                        item.baby = baby;
+                        fn2(err2);
+                    })
+                }, fn);
+            }],
+            total: function(fn){
+                Luck.getTotalByQuery(query, fn);
+            }
+        }, function(err, d){
+            res.render('user/luck_win', {list: d.list, total: d.total});
+        });
+    },
+
+    recharge: function(req, res){
+
+        Rmb.getBy
+
     },
 
     baseInfo: function(req, res, next){
