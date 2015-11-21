@@ -54,13 +54,16 @@ var user = G.req.session.user;
     </div>
 </div>
 <%
-/*var catId = locals.categoryId || "";
-var t = URL.parse(G.req.url).pathname.split('/');
-var d = t[t.length - 1]*/
-    var catId = 'home';
+var catId = locals.categoryId || "";
+var t = G.url.parse(G.req.url).pathname.split('/');
+var d = t[t.length - 1]
+
 %>
 <div class="g-nav" id="G_nav">
     <ul class="g-nav-in g-wp">
-        <li class="h"><a class="nav <%= catId == "home" ? 'now' : ''%>" href="<%= G.linkUrl %>">首页</a></li>
+        <li class="h"><a class="nav <%= catId == "home" ? 'now' : ''%>" href="<%= G.linkUrl %>">人气</a></li>
+        <li class="h"><a class="nav <%= catId == "home" ? 'now' : ''%>" href="<%= G.linkUrl %>/new">最新</a></li>
+        <li class="h"><a class="nav <%= catId == "home" ? 'now' : ''%>" href="<%= G.linkUrl %>/progress">进度</a></li>
+        <li class="h"><a class="nav <%= catId == "home" ? 'now' : ''%>" href="<%= G.linkUrl %>/pp">总需人数</a></li>
     </ul>
 </div>
