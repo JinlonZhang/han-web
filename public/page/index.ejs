@@ -8,14 +8,15 @@
 </head>
 <body>
 <% include ./mod/mod.head.ejs %>
-<% _.each(list, function(o){ %>
-    season=<%= o.season %>
-    <%= o.name %>
-    <%= o.price_now %>/<%= o.price %>
-    <a class="j-luck" data-url="/api/luck?id=<%= o._id %>&num=1" href="javascript://">link</a>
-<% }) %>
-
+<div class="g-bd g-wp">
+    <% _.each(list, function(o){ %>
+        season=<%= o.season %>
+        <a href="/baby/<%= o._id %>" target="_blank"><%= o.name %></a>
+        <%= o.price_now %>/<%= o.price %>
+        <a class="j-luck" data-url="/api/luck?id=<%= o._id %>&num=1" href="javascript://">link</a>
+    <% }) %>
+</div>
 <% include ./mod/mod.foot.ejs %>
 <% include ./inc/inc.foot.ejs %>
 </body>
-</head>
+</html>

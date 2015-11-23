@@ -1,0 +1,6 @@
+
+.u-as{display: inline-block;}
+.u-as button{font-size: 15px;}
+.u-as input{border-left-width: 0;border-right-width: 0;border-radius: 0;margin: 0 -2px;width: 50px;text-align: center}
+.u-as .add{border-radius: 0 3px 3px 0}
+.u-as .sub{border-radius: 3px 0 0 3px}
