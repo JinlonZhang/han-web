@@ -11,13 +11,18 @@
 <div class="g-bd g-wp">
     <%= detail.name %>
     <%= detail.price_now %>/<%= detail.price %>
-    <div class="u-as">
-        <button type="button" class="u-btn u-b-white sub">-</button><input type="text" value="1" /><button type="button" class="u-btn u-b-white add">+</button>
+    <div class="u-as j-as">
+        <button type="button" class="u-btn u-b-white sub j-as-btn" data-v="-1">-</button><input type="text" value="1" name="num" id="num"/><button type="button" class="u-btn u-b-white add j-as-btn" data-v="1">+</button>
     </div>
-    <button type="button" class="u-btn u-b-white" >提交</button>
+    <button type="button" class="u-btn u-b-white" id="sub">提交</button>
 </div>
 
 <% include ./mod/mod.foot.ejs %>
 <% include ./inc/inc.foot.ejs %>
+<script>
+    require(['page/baby'], function(page){
+        page.init();
+    })
+</script>
 </body>
 </html>
