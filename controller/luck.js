@@ -36,7 +36,7 @@ _.extend(mod.api, {
      * @param res
      */
     add: function(req, res){
-        var baby_id = req.query.id, user_id = req.session.user._id, num = req.query.num || 1;
+        var baby_id = req.body.baby_id, user_id = req.session.user._id, num = req.query.num || 1;
 
         var o = {
             baby_id: baby_id,

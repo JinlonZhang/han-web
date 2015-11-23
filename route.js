@@ -77,8 +77,8 @@ module.exports = function(app){
     app.post('/api/login', site.api.login);
     app.post('/api/reg', reg.api.reg);
 
-    app.post('/api/luck', auth.login, luck.api.add);
-    app.post('/api/pay', auth.login, pay.api.add);
+    app.post('/api/luck', auth.api.login, luck.api.add);
+    app.post('/api/pay', auth.api.login, pay.api.add);
 
 
 

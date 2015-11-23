@@ -39,12 +39,13 @@ define(function(require){
         },
 
         luckClick: function(dom){
-            var w = this, url = dom.data('url');
+            var w = this, url = dom.data('url'), id = dom.data('id');
 
             w.needLogin(function(){
                 $.ajax({
                     type: 'post',
                     url: url,
+                    data: {baby_id: id, num: 1},
                     dataType: 'json',
                     success: function(d){
                         if(d.code == -100){

@@ -6,10 +6,10 @@ define(function(require){
     var obj = {};
 
     _.extend(obj, {
-        init: function(){
+        init: function(o){
             var w = this;
 
-
+            w.id = o.id;
             w.text = $('#num');
 
             w.initEvent();
@@ -31,9 +31,17 @@ define(function(require){
         },
 
         submit: function(){
-            var w = this;
+            var w = this, num = w.text.val()*1, id = w.id;
 
-            alert(w.text.val() * 1);
+            $.ajax({
+                url: '/api/luck',
+                type: 'post',
+                dataType: 'json',
+                data: {baby_id: id, num: num},
+                success: function(d){
+                    alert(d);
+                }
+            });
         }
     });
 
