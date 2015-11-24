@@ -23,9 +23,9 @@ define(function(require){
                 w.text.val( w.text.val()*1 + v < 1 ? 1 : w.text.val()*1 + v);
             });
 
-            w.text.click(function(){ this.select(); })
+            w.text.click(function(){ this.select(); });
 
-            $('#sub').click(function(){
+            $('.j-form').submit(function(){
                 w.submit();
             })
         },
@@ -33,13 +33,19 @@ define(function(require){
         submit: function(){
             var w = this, num = w.text.val()*1, id = w.id;
 
+
+
             $.ajax({
                 url: '/api/luck',
                 type: 'post',
                 dataType: 'json',
                 data: {baby_id: id, num: num},
                 success: function(d){
-                    alert(d);
+                    if(d.code == -100){
+
+                    }else{
+
+                    }
                 }
             });
         }

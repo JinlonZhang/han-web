@@ -7,7 +7,19 @@ define(function(require){
     var obj = {};
 
     _.extend(obj, {
+
         ajaxCallback: function(){
+
+        },
+
+        needLogin: function(fn){
+            var w = this;
+
+            if(w.sessionId == ''){
+                alert('need login');
+            }else{
+                fn();
+            }
 
         }
     });

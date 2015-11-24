@@ -12,6 +12,8 @@ define(function(require){
             var w = this;
 
             w.sessionId = o.sessionId;
+            util.sessionId = o.sessionId;
+
             w.form = $('.j-form');
             w.luck = $('.j-luck');
 
@@ -41,7 +43,7 @@ define(function(require){
         luckClick: function(dom){
             var w = this, url = dom.data('url'), id = dom.data('id');
 
-            w.needLogin(function(){
+            util.needLogin(function(){
                 $.ajax({
                     type: 'post',
                     url: url,
