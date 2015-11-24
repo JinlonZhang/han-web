@@ -80,6 +80,8 @@ module.exports = function(app){
     app.post('/api/luck', auth.api.login, luck.api.add);
     app.post('/api/pay', auth.api.login, pay.api.add);
 
+    app.get('/api/baby/:id', auth.api.login, baby.api.detail);
+
 
 
     /**

@@ -29,36 +29,29 @@ define(function(require){
             });
         },
 
-        needLogin: function(fn){
-            var w = this;
-
-            if(w.sessionId == ''){
-                alert('need login');
-            }else{
-                fn();
-            }
-
-        },
-
         luckClick: function(dom){
-            var w = this, url = dom.data('url'), id = dom.data('id');
+            var w = this, url = '/api/luck', id = dom.data('id'), num = dom.data('num'),
+                parent = dom.parents('.j-entry'), progress = parent.find('.j-progress');
 
             util.needLogin(function(){
                 $.ajax({
                     type: 'post',
                     url: url,
-                    data: {baby_id: id, num: 1},
+                    data: {baby_id: id, num: num},
                     dataType: 'json',
                     success: function(d){
-                        if(d.code == -100){
-                            alert('need rmb');
-                            return;
-                        }
-                        window.location.reload();
+                        util.ajaxCallback(d, function(){
+                            $.get('/api/baby/' + id, function(d){
+                                progress.html( w.tpl_progress({o: d.detail}) );
+                            });
+                        });
                     }
                 })
             })
-        }
+        },
+
+        tpl_progress: _.template( $('#tpl_baby_progress').html() )
+
     });
 
     return obj;

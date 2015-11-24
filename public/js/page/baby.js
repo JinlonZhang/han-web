@@ -3,6 +3,8 @@
  */
 
 define(function(require){
+    var util = require('../app/util');
+
     var obj = {};
 
     _.extend(obj, {
@@ -33,19 +35,15 @@ define(function(require){
         submit: function(){
             var w = this, num = w.text.val()*1, id = w.id;
 
-
-
             $.ajax({
                 url: '/api/luck',
                 type: 'post',
                 dataType: 'json',
                 data: {baby_id: id, num: num},
                 success: function(d){
-                    if(d.code == -100){
-
-                    }else{
-
-                    }
+                    util.ajaxCallback(d, function(){
+                        window.location.reload();
+                    })
                 }
             });
         }

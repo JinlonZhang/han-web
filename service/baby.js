@@ -35,7 +35,6 @@ _.extend(mod, {
                 Luck.getByQuery({date: {$lt: luck.date} }, {}, {sort: {date: -1}, limit: 50}, function(err, list){
                     var num = 0;
                     _.each(list, function(entry){
-                        console.log(entry.baby_id);
                         var tmp = moment(entry.date).format('HHmmssSSS') * 1;
                         num = num + tmp;
                     });

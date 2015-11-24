@@ -37,5 +37,11 @@ _.extend(mod, {
 
 /****************** API *********************/
 _.extend(mod.api, {
+    detail: function(req, res){
+        var id = req.params.id;
 
+        Baby.getById(id, {name: 1, cover: 1, price: 1, price_now: 1}, function(err, d){
+            res.json( util.res(err, {detail: d}) );
+        });
+    }
 });
