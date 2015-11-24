@@ -1,0 +1,7 @@
+
+.u-pg{width:100%;height: 10px;margin-bottom:8px;background: #ccc;border-radius: 5px;}
+.u-pg-bar{background: #369;height: 100%;border-radius: 5px;}
+.u-pg-txt{overflow: hidden;}
+.u-pg-txt li{width: 50%;border-width:0;}
+.u-pg-txt p{color: #999;}
+.u-pg-txt p b{color: #333;}

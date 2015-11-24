@@ -1,4 +1,16 @@
 
 <script type="text/template" id="tpl_baby_progress">
-    {%= o.price_now %}
+    <div class="u-pg">
+        <div class="u-pg-bar" style="width: {%= (o.price_now / o.price).toFixed(4) * 100 %}%"></div>
+    </div>
+    <ul class="u-pg-txt">
+        <li class="f-fl">
+            <p><b>{%= o.price_now %}</b></p>
+            <p>已参与人数</p>
+        </li>
+        <li class="f-fr f-tar">
+            <p><b>{%= o.price_need %}</b></p>
+            <p>剩余人数</p>
+        </li>
+    </ul>
 </script>

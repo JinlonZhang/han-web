@@ -29,6 +29,7 @@ define(function(require){
 
             $('.j-form').submit(function(){
                 w.submit();
+                return false;
             })
         },
 
