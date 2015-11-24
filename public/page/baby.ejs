@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ./inc/inc.head.ejs %>
+    <style>
+
+    </style>
+</head>
+<body>
+<% include ./mod/mod.head.ejs %>
+<div class="g-bd g-wp">
+    <%= detail.name %>
+    <%= detail.price_now %>/<%= detail.price %>
+    <form action="/api/luck" method="post" class="j-form">
+        <div class="u-as j-as">
+            <button type="button" class="u-btn u-b-white sub j-as-btn" data-v="-1">-</button><input type="text" value="1" name="num" id="num"/><button type="button" class="u-btn u-b-white add j-as-btn" data-v="1">+</button>
+        </div>
+
+        <button type="submit" class="u-btn u-b-white" id="sub">提交</button>
+    </form>
+    <% _.each(detail.detail, function(img){%>
+        <img src="<%= img %>" />
+    <% }) %>
+</div>
+
+<% include ./mod/mod.foot.ejs %>
+<% include ./inc/inc.foot.ejs %>
+<script>
+    require(['page/baby'], function(page){
+        page.init({
+            id: '<%= detail._id %>'
+        });
+    })
+</script>
+</body>
+</html>

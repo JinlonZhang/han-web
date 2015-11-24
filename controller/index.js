@@ -8,7 +8,8 @@ var mod = {
     reg: require('./reg'),
     luck: require('./luck'),
     pay: require('./pay'),
-    user: require('./user')
+    user: require('./user'),
+    baby: require('./baby')
 };
 
 module.exports = mod;

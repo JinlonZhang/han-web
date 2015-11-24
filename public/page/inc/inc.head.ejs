@@ -8,14 +8,19 @@
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <meta name="Author" content="" />
 
-<link rel='stylesheet' href='/css/common.css' />
-<link rel='stylesheet' href='/css/layout.css' />
-<link rel='stylesheet' href='/css/ui/ui-ico.css' />
-<link rel='stylesheet' href='/css/ui/ui-button.css' />
-<link rel='stylesheet' href='/css/ui/ui-form.css' />
-<link rel='stylesheet' href='/css/ui/ui-pop.css' />
-<link rel='stylesheet' href='/css/ui/ui-window.css' />
-<link rel='stylesheet' href='/css/ui/ui-loading.css' />
-<link rel='stylesheet' href='/css/page/share.css' />
-<link rel='stylesheet' href='/css/page/user.css' />
-<link rel='stylesheet' href='/css/page/reg.css' />
+<% if(G.onLine == 1){ %>
+    <link rel='stylesheet' href='<%= G.staticPath %>/css/base.css' />
+    <link rel='stylesheet' href='<%= G.staticPath %>/css/layout.css' />
+    <link rel='stylesheet' href='<%= G.staticPath %>/css/ui/ui-ico.css' />
+    <link rel='stylesheet' href='<%= G.staticPath %>/css/ui/ui-button.css' />
+    <link rel='stylesheet' href='<%= G.staticPath %>/css/ui/ui-form.css' />
+    <link rel='stylesheet' href='<%= G.staticPath %>/css/ui/ui-pop.css' />
+    <link rel='stylesheet' href='<%= G.staticPath %>/css/ui/ui-window.css' />
+    <link rel='stylesheet' href='<%= G.staticPath %>/css/ui/ui-loading.css' />
+    <link rel='stylesheet' href='<%= G.staticPath %>/css/ui/ui-addsub.css' />
+    <link rel='stylesheet' href='<%= G.staticPath %>/css/page/share.css' />
+    <link rel='stylesheet' href='<%= G.staticPath %>/css/page/user.css' />
+    <link rel='stylesheet' href='<%= G.staticPath %>/css/page/reg.css' />
+<% }else{ %>
+    <link rel='stylesheet' href='<%= G.staticPath %>/css/all.min.css' />
+<% } %>

@@ -13,6 +13,7 @@ var reg = con.reg;
 var luck = con.luck;
 var pay = con.pay;
 var user = con.user;
+var baby = con.baby;
 
 var auth = {};
 auth.api = {};
@@ -66,6 +67,7 @@ module.exports = function(app){
     app.get('/reg', auth.not_login, site.reg);
     app.get('/logout', site.logout);
     app.get('/pay', pay.index);
+    app.get('/baby/:id', baby.index);
 
     app.get('/user/:id', user.baseInfo, user.index);
     app.get('/user/:id/luck', user.baseInfo, user.luck);
@@ -75,8 +77,10 @@ module.exports = function(app){
     app.post('/api/login', site.api.login);
     app.post('/api/reg', reg.api.reg);
 
-    app.post('/api/luck', auth.login, luck.api.add);
-    app.post('/api/pay', auth.login, pay.api.add);
+    app.post('/api/luck', auth.api.login, luck.api.add);
+    app.post('/api/pay', auth.api.login, pay.api.add);
+
+    app.get('/api/baby/:id', auth.api.login, baby.api.detail);
 
 
 

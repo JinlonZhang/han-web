@@ -36,7 +36,7 @@ _.extend(mod.api, {
      * @param res
      */
     add: function(req, res){
-        var baby_id = req.query.id, user_id = req.session.user._id, num = req.query.num || 1;
+        var baby_id = req.body.baby_id, user_id = req.session.user._id, num = req.query.num || 1;
 
         var o = {
             baby_id: baby_id,
@@ -92,12 +92,12 @@ _.extend(mod.api, {
                         },
                         user: function(fn2){ d.user.rmb--;d.user.save(fn2); }
                     }, function(err, d){
-                        //if(d.baby[0].price_need <= 0) {
+                        if(d.baby[0].price_need <= 0) {
                             console.log('luck && start next season');
                             service_baby.luck( {baby: d.baby[0], luck: d.luck[0]} );
                             fn1(err);
                             return;
-                        //}
+                        }
                         if(d.user[0].rmb <= 0){
                             console.log('user rmb is 0');
                             fn1(err, {rmbOut: 1});

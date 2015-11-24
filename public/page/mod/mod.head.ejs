@@ -1,5 +1,6 @@
 <%
 var user = G.req.session.user;
+
 %>
 <style>
     .usr-tp{position: relative;margin-left: 6px;}
@@ -20,19 +21,20 @@ var user = G.req.session.user;
         <ul class="g-tp g-tp-usr">
             <% if(user){ %>
                 <li class="usr-tp j-pop" opt='{"trigger": "hover", "pos":"right"}'>
-
                     <a class="f usr-link" href="/user/<%= user._id %>">
                         <img src="<%= user.avatarUrl %>!50x50"/>
                         <%= user.nick_name %>
                         <i class="ico ico-angle-down ico-r"></i>
                     </a>
-                    <a href="/pay" target="_blank" rel="nofollow"><%= user.rmb %></a>
                     <div class="u-pop-child usr-nav-wp j-pop-box" style="height: 66px;">
                         <ul>
                             <li><a href="/user/<%= user._id %>/profile" class="usr-nav"><i class="ico ico-config ico-c-grey"></i>个人设置</a></li>
                             <li><a href="/logout" rel="nofollow" class="usr-nav">退出</a></li>
                         </ul>
                     </div>
+                </li>
+                <li>
+                    <a class="g-tp-a" href="/pay" target="_blank"><%= user.rmb %></a>
                 </li>
             <% }else{ %>
                 <li><a href="javascript://" class="g-tp-a j-wbLogin f"><i class="ico ico-wb"></i>微博登录</a></li>

@@ -3,19 +3,42 @@
 <head>
     <% include ./inc/inc.head.ejs %>
     <style>
+        .m-index{position: relative;}
+        .m-index-hd{}
+        .m-index-bd{}
+        .m-list{}
+        .m-list li{float:left;margin-left: -1px;margin-top: -1px;overflow: hidden;border: 1px solid #e8e8e8;background: #fff;position: relative;}
+        .m-list-in{margin: 20px 19px 15px 20px;height: 329px;}
 
+        .m-list-btn{margin-top: 12px;text-align: center;}
     </style>
 </head>
 <body>
 <% include ./mod/mod.head.ejs %>
-<% _.each(list, function(o){ %>
-    season=<%= o.season %>
-    <%= o.name %>
-    <%= o.price_now %>/<%= o.price %>
-    <a class="j-luck" data-url="/api/luck?id=<%= o._id %>&num=1" href="javascript://">link</a>
-<% }) %>
+<div class="g-bd g-wp">
+    <div class="m-index">
+        <div class="m-index-hd">
 
+        </div>
+        <div class="m-index-bd">
+            <ul class="m-list">
+                <% _.each(list, function(o){ %>
+                    <li class="j-entry">
+                        <div class="m-list-in">
+                            <div class="m-list-img"><a href="/baby/<%= o._id %>" target="_blank" title="<%= o.name %>"><img width="200" height="150" src="<%= o.cover[0] %>" /></a></div>
+                            <div class="m-list-name"><a href="/baby/<%= o._id %>" target="_blank" title="<%= o.name %>"><%= o.name %></a></div>
+                            <div class="m-list-price">总需：<%= o.price %></div>
+                            <div class="m-list-progress j-progress"><%= o.price_now %></div>
+                            <div class="m-list-btn"><button class="u-btn u-b-red j-luck" data-id="<%= o._id %>" data-num="1">link</button></div>
+                        </div>
+                    </li>
+                <% }) %>
+            </ul>
+        </div>
+    </div>
+
+</div>
 <% include ./mod/mod.foot.ejs %>
 <% include ./inc/inc.foot.ejs %>
 </body>
-</head>
+</html>
