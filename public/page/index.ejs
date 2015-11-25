@@ -8,8 +8,8 @@
         .m-index-bd{}
         .m-list{}
         .m-list li.entry{float:left;margin-left: -1px;margin-top: -1px;overflow: hidden;border: 1px solid #e8e8e8;background: #fff;position: relative;}
-        .m-list-in{margin: 20px 19px 15px 20px;height: 329px;}
-        .m-list-name{margin-bottom: 5px;}
+        .m-list-in{margin: 20px 19px 15px 20px;height: 329px;width: 200px;}
+        .m-list-name{margin-bottom: 5px;width: 100%;}
         .m-list-price{margin-bottom: 5px;color: #999;}
         .m-list-btn{margin-top: 12px;text-align: center;}
     </style>
@@ -27,7 +27,7 @@
                     <li class="entry j-entry">
                         <div class="m-list-in">
                             <div class="m-list-img"><a href="/baby/<%= o._id %>" target="_blank" title="<%= o.name %>"><img width="200" height="150" src="<%= o.cover[0] %>" /></a></div>
-                            <div class="m-list-name"><a href="/baby/<%= o._id %>" target="_blank" title="<%= o.name %>"><%= o.name %></a></div>
+                            <div class="m-list-name f-toe"><a href="/baby/<%= o._id %>" target="_blank" title="<%= o.name %>"><%= o.name %></a></div>
                             <div class="m-list-price">总需：<%= o.price %></div>
                             <div class="m-list-progress j-progress">
                                 <div class="u-pg">
