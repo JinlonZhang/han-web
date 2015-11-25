@@ -3,55 +3,75 @@
 <head>
     <% include ./inc/inc.head.ejs %>
     <style>
-        .m-index{position: relative;}
-        .m-index-hd{}
+        .m-main{width:960px;float:left;}
+        .m-index-hd{height: 40px;position: relative;}
+        .m-index-hd h3{line-height: 40px;font-size:18px;}
+        .m-index-more{position: absolute;right: 0;bottom:0; line-height: 30px;color: #808080;}
         .m-index-bd{}
         .m-list{}
         .m-list li.entry{float:left;margin-left: -1px;margin-top: -1px;overflow: hidden;border: 1px solid #e8e8e8;background: #fff;position: relative;}
-        .m-list-in{margin: 20px 19px 15px 20px;height: 329px;width: 200px;}
-        .m-list-name{margin-bottom: 5px;width: 100%;}
-        .m-list-price{margin-bottom: 5px;color: #999;}
-        .m-list-btn{margin-top: 12px;text-align: center;}
+        .m-list-in{margin: 20px 19px 15px 20px;height: 325px;width: 200px;}
+        .m-list-img{margin-bottom: 10px;}
+        .m-list-name{margin-bottom: 2px;width: 100%;}
+        .m-list-price{margin-bottom: 8px;color: #999;}
+        .m-list-btn{margin-top: 16px;text-align: center;}
+
+        .m-side{float:right;width: 230px;}
+        .m-rank-hd{background: #898989;padding-left:15px;height: 35px;line-height: 35px;color: #fff;font-size:16px;}
+        .m-rank-bd{border:#ddd 1px solid;height: 670px;border-top-width: 0;border-bottom-width: 0;}
+        .m-rank-ft{height: 56px;line-height:56px;background: #f5f5f5;color:#808080;font-size: 20px;text-align: center;border:#ddd 1px solid;border-top-width:0;}
     </style>
 </head>
 <body>
 <% include ./mod/mod.head.ejs %>
-<div class="g-bd g-wp">
-    <div class="m-index">
-        <div class="m-index-hd">
 
-        </div>
-        <div class="m-index-bd">
-            <ul class="m-list">
-                <% _.each(list, function(o){ %>
-                    <li class="entry j-entry">
-                        <div class="m-list-in">
-                            <div class="m-list-img"><a href="/baby/<%= o._id %>" target="_blank" title="<%= o.name %>"><img width="200" height="150" src="<%= o.cover[0] %>" /></a></div>
-                            <div class="m-list-name f-toe"><a href="/baby/<%= o._id %>" target="_blank" title="<%= o.name %>"><%= o.name %></a></div>
-                            <div class="m-list-price">总需：<%= o.price %></div>
-                            <div class="m-list-progress j-progress">
-                                <div class="u-pg">
-                                    <div class="u-pg-bar" style="width: <%= (o.price_now / o.price).toFixed(4) * 100 %>%"></div>
+<div class="g-bd g-wp f-cb">
+    <div class="g-banner">banner</div>
+
+    <div class="g-body">
+        <div class="m-main">
+            <div class="m-index-hd">
+                <h3>最热商品</h3>
+                <a href="<%= G.linkUrl%>/list" class="m-index-more">更多商品，点击查看</a>
+            </div>
+            <div class="m-index-bd f-cb">
+                <ul class="m-list">
+                    <% _.each(list, function(o){ %>
+                        <li class="entry j-entry">
+                            <div class="m-list-in">
+                                <div class="m-list-img"><a href="/baby/<%= o._id %>" target="_blank" title="<%= o.name %>"><img width="200" height="150" src="<%= o.cover[0] %>" /></a></div>
+                                <div class="m-list-name f-toe"><a href="/baby/<%= o._id %>" target="_blank" title="<%= o.name %>"><%= o.name %></a></div>
+                                <div class="m-list-price">总需：<%= o.price %></div>
+                                <div class="m-list-progress j-progress">
+                                    <div class="u-pg">
+                                        <div class="u-pg-bar" style="width: <%= (o.price_now / o.price).toFixed(4) * 100 %>%"></div>
+                                    </div>
+                                    <ul class="u-pg-txt">
+                                        <li class="f-fl">
+                                            <p><b><%= o.price_now %></b></p>
+                                            <p>已参与人数</p>
+                                        </li>
+                                        <li class="f-fr f-tar">
+                                            <p><b><%= o.price_need %></b></p>
+                                            <p>剩余人数</p>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="u-pg-txt">
-                                    <li class="f-fl">
-                                        <p><b><%= o.price_now %></b></p>
-                                        <p>已参与人数</p>
-                                    </li>
-                                    <li class="f-fr f-tar">
-                                        <p><b><%= o.price_need %></b></p>
-                                        <p>剩余人数</p>
-                                    </li>
-                                </ul>
+                                <div class="m-list-btn"><button class="u-btn u-b-red u-b-big j-luck" data-id="<%= o._id %>" data-num="1">立即夺宝</button></div>
                             </div>
-                            <div class="m-list-btn"><button class="u-btn u-b-red j-luck" data-id="<%= o._id %>" data-num="1">link</button></div>
-                        </div>
-                    </li>
-                <% }) %>
-            </ul>
+                        </li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+        <div class="m-side">
+            <div class="m-rank">
+                <div class="m-rank-hd">一元传奇</div>
+                <div class="m-rank-bd"></div>
+                <div class="m-rank-ft">看看谁的狗屎运最好</div>
+            </div>
         </div>
     </div>
-
 </div>
 <% include ./mod/mod.foot.ejs %>
 <% include ./inc/inc.foot.ejs %>

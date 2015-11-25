@@ -62,10 +62,15 @@ var d = t[t.length - 1]
 
 %>
 <div class="g-nav" id="G_nav">
-    <ul class="g-nav-in g-wp">
-        <li class="h"><a class="nav <%= catId == "home" ? 'now' : ''%>" href="<%= G.linkUrl %>">人气</a></li>
-        <li class="h"><a class="nav <%= catId == "home" ? 'now' : ''%>" href="<%= G.linkUrl %>/new">最新</a></li>
-        <li class="h"><a class="nav <%= catId == "home" ? 'now' : ''%>" href="<%= G.linkUrl %>/progress">进度</a></li>
-        <li class="h"><a class="nav <%= catId == "home" ? 'now' : ''%>" href="<%= G.linkUrl %>/pp">总需人数</a></li>
-    </ul>
+    <div class="g-wp">
+        <div class="m-cate">
+            <div class="m-cate-hd"><h2>商品分类</h2></div>
+        </div>
+        <ul class="m-nav">
+            <li class="h"><a class="nav <%= catId == "home" ? 'now' : ''%>" href="<%= G.linkUrl %>">首页</a></li>
+            <li class="h"><i>|</i><a class="nav <%= catId == "home" ? 'now' : ''%>" href="<%= G.linkUrl %>/new">最新揭晓</a></li>
+            <li class="h"><i>|</i><a class="nav <%= catId == "home" ? 'now' : ''%>" href="<%= G.linkUrl %>/progress">进度</a></li>
+            <li class="h"><i>|</i><a class="nav <%= catId == "home" ? 'now' : ''%>" href="<%= G.linkUrl %>/pp">总需人数</a></li>
+        </ul>
+    </div>
 </div>
