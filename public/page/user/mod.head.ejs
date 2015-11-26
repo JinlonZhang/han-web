@@ -1,20 +1,16 @@
 
 
-<div class="us-cover"></div>
 <div class="us-info-w">
 
     <div class="us-avatar">
-        <div class="us-ava">
-            <img class="img" src="<%= user.avatarUrl %>!180x180"/>
-            <% if(isSelf){ %>
-                <a href="<%= G.linkUrl %>user/<%= user._id %>/avatar" class="a-ava u-btn u-b-white u-b-mini">avatar</a>
-            <% } %>
-        </div>
-
-
+        <img class="img" src="<%= user.avatar_url %>!180x180"/>
+        <% if(isSelf){ %>
+            <a href="<%= G.linkUrl %>/user/<%= user._id %>/avatar" class="a-ava u-btn u-b-white u-b-mini">修改头像</a>
+        <% } %>
     </div>
     <div class="us-info">
-        <h1><%= user.name %></h1>
+        <h1><%= user.nick_name %></h1>
+        <p>ID: <%= user._id %></p>
     </div>
 </div>
 
@@ -28,11 +24,9 @@ function getCls(s){
 %>
 <div class="us-nav">
     <ul>
-
-        <li class="f"><a class="us-mu <%= getCls(user._id) %>" href="/user/<%= user._id %>">ppp</a></li>
-        <li class="f"><a class="us-mu <%= getCls(user._id) %>" href="/user/<%= user._id %>/luck">ppp</a></li>
-        <li class="f"><a class="us-mu <%= getCls(user._id) %>" href="/user/<%= user._id %>/win">win</a></li>
-        <li class="f"><a class="us-mu <%= getCls(user._id) %>" href="/user/<%= user._id %>/recharge">recharge</a></li>
+        <li class="f"><a class="us-mu <%= getCls('luck') %>" href="/user/<%= user._id %>/luck">夺宝记录</a></li>
+        <li class="f"><a class="us-mu <%= getCls('win') %>" href="/user/<%= user._id %>/win">中奖记录</a></li>
+        <li class="f"><a class="us-mu <%= getCls('recharge') %>" href="/user/<%= user._id %>/recharge">充值记录</a></li>
 
     </ul>
 </div>

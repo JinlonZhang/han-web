@@ -38,7 +38,7 @@ var user = G.req.session.user;
             <% if(user){ %>
                 <li class="usr-tp j-pop" opt='{"trigger": "hover", "pos":"right"}'>
                     <a class="f usr-link" href="/user/<%= user._id %>">
-                        <img src="<%= user.avatarUrl %>!50x50"/>
+                        <img src="<%= user.avatar_url %>!50x50"/>
                         <%= user.nick_name %>
                         <i class="ico ico-angle-down ico-r"></i>
                     </a>
