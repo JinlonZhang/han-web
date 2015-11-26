@@ -41,14 +41,20 @@ _.extend(mod.api, {
             pwd2 : req.body.pwd2,
             avatarUrl: 'http://127.0.0.1:5050/img/avatar.jpg'
         };
+
+        var regPhone = /^1\d{10}$/;
+
         if(o.login_name == ''){
-            return res.json( util.res(-1, {msg: '注册邮箱不能为空。'}) )
+            return res.json( util.res(-1, {msg: '邮箱/手机不能为空。'}) )
+        }
+        if(o.login_name.indexOf('@') < 0 && !regPhone.test(o.login_name) ){
+            return res.json( util.res(-1, {msg: '手机号码格式错误。'}) )
         }
         if(o.pwd == ''){
             return res.json( util.res(-1, {msg: '密码不能为空'}) );
         }
         if(o.pwd.length < 6){
-            //return res.json( util.res(-1, {msg: '密码长度必须大于等于6位'}) );
+            return res.json( util.res(-1, {msg: '密码长度必须大于等于6位'}) );
         }
         if(o.pwd != o.pwd2){
             return res.json( util.res(-1, {msg: '两次密码不一致。'}) )
@@ -78,13 +84,13 @@ _.extend(mod.api, {
             }]
         }, function(err, data){
             if(data.checkLoginName != null){
-                return res.json( util.res(-1, {msg: '邮箱已被注册！'}) );
+                return res.json( util.res(-1, {msg: '邮箱/手机已被注册！'}) );
             }
             if(data.checkName != null){
                 return res.json( util.res(-1, {msg: '昵称重复！'}) );
             }
             req.session.user = data.add[0];
-            res.json( util.res(0) );
+            res.json( util.res(err) );
         });
     }
 })

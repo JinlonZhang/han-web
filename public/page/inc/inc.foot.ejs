@@ -27,8 +27,5 @@
             sessionId: '<%= G.req.session.user && G.req.session.user._id %>'
         });
     });
-    _.create = function(){
-        return function() { this.init.apply(this, arguments); }
-    }
 </script>
 <% include ../tpl/tpl.all.ejs %>

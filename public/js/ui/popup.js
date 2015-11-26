@@ -3,11 +3,18 @@
  */
 
 define(function(require){
-    var base = require('base');
-    var obj = _.extend(base);
+    var base = require('./base');
+
+    var obj = function(d){
+        base.call(this, d);
+
+        this.init(d);
+    };
 
     _.extend(obj.prototype, {
+        init: function(d){
 
+        }
     });
 
     return obj;

@@ -4,6 +4,7 @@
 
 define(function(require){
     var util = require('./util');
+    var popup = require('../ui/popup');
 
     var obj = {};
 
@@ -16,6 +17,7 @@ define(function(require){
 
             w.form = $('.j-form');
             w.luck = $('.j-luck');
+            w.pop = $('.j-pop');
 
             w.initEvent();
         },
@@ -27,6 +29,12 @@ define(function(require){
                 w.luckClick( $(this) );
                 return false;
             });
+
+            w.pop.each(function(){
+                new popup({
+                    el: $(this)
+                })
+            })
         },
 
         luckClick: function(dom){
