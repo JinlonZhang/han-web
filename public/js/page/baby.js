@@ -27,9 +27,8 @@ define(function(require){
 
             w.text.click(function(){ this.select(); });
 
-            $('.j-form').submit(function(){
+            $('#sub').click(function(){
                 w.submit();
-                return false;
             })
         },
 

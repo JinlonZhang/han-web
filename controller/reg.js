@@ -39,7 +39,7 @@ _.extend(mod.api, {
             nick_name : xss(req.body.nick_name).trim(),
             pwd : req.body.pwd,
             pwd2 : req.body.pwd2,
-            avatarUrl: 'http://127.0.0.1:5050/img/avatar.jpg'
+            avatarUrl: 'http://127.0.0.1:5050/img/avatar.png'
         };
 
         var regPhone = /^1\d{10}$/;

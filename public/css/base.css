@@ -31,19 +31,8 @@ a.a-c:hover{color:#00adee;}
 
 code,.hide{display: none;}
 
-.ib{display: inline-block;zoom: 1;*display: inline;}
-
-.ch-12{font-size: 12px;}
-.ch-info{font-size:12px;color:#a4a4a4;}
-.ch-sp{margin:0 8px;}
-.ch-ells{overflow: hidden;text-overflow:ellipsis;white-space:nowrap;}
-.ch-fv{color: red;margin-left:10px;vertical-align: middle;}
-.ch-line{text-decoration:line-through;}
-.ch-lg{font-size:22px;}
-.ch-cate{color:#fb487f;}
-.ch-price-p{font-size:10px;font-weight: normal;}
-.ch-red{color: red;font-size:18px;}
-.ch-rosy{color: #ff5b97!important;}
+.txt-blue{color: #39f}
+.txt-red{color: #db3652}
 
 .radio{/*vertical-align: -2px;_vertical-align: -3px;*/margin-right: 3px}
 

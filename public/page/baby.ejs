@@ -3,14 +3,97 @@
 <head>
     <% include ./inc/inc.head.ejs %>
     <style>
+        .m-de{position: relative;height: 560px;}
+        .m-de .main{position:absolute;top: 30px;left:0;width: 910px;}
+        .m-de .side{position:absolute;top: 0px;right:0;width: 270px;height: 100%;border: 1px solid #ddd;background-color: #f2f2f2;}
+        .m-de .dir{position: absolute;top:0;left:0;}
+        .m-de-show{float: left;width: 435px;height: 500px;}
+        .m-de-img{width:400px;padding: 10px;border:#ddd 1px solid}
+        .m-de-img img{height: 400px;width: 400px;}
 
+        .m-de-main{height: 500px;width:470px;float: right;}
+        .m-de-h1{margin-bottom: 8px;height:auto;max-height: 64px;overflow: hidden;}
+        .m-de-h1 h1{font-size: 20px;line-height: 30px;color: #3c3c3c;word-break: break-all;font-family: "Microsoft Yahei";}
+        .m-de-in{padding-right: 50px;padding-top:12px;border:#a0a0a0 1px dotted;border-left:0;border-right: 0;}
+        .m-de-price{margin-bottom: 4px;}
+        .m-de-price i{font-size: 18px;padding: 0 8px;}
+        .u-pg{background: #e3e3e3;height: 13px;}
+        .m-de-p{font-size: 18px;font-weight: normal;}
+        .m-de-pg-txt{text-align: center;margin:12px 0 20px;color: #808080;}
+        .m-de-num{height: 30px;color: #808080;}
+        .m-de-btn{margin: 30px 0}
+        .m-de-btn .u-btn{font-size: 18px;padding: 12px 28px;}
+
+        .m-de-per-hd{height: 40px;line-height:40px;font-size: 18px;padding-left: 20px;}
+        .m-de-per-bd{height: 510px;margin: 0 10px 9px;background: #fff url('/img/detail-wait.png') center bottom no-repeat;}
+
+        .m-de-list img{float: left;width: 100%;}
     </style>
 </head>
 <body>
 <% include ./mod/mod.head.ejs %>
 <div class="g-bd g-wp">
-    <%= detail.name %>
-    <%= detail.price_now %>/<%= detail.price %>
+    <div class="m-de">
+        <div class="dir"><a href="http://1.163.com">首页</a> &gt; <a href="http://1.163.com/list/1-0-1-1.html">手机平板</a> &gt; <span class="txt-red">商品详情 [期号：211282612]</span></div>
+        <div class="main">
+            <div class="m-de-show">
+                <div class="m-de-img"><img src="<%= detail.cover[0] %>" /></div>
+                <div class="m-de-img-list"></div>
+
+            </div>
+            <div class="m-de-main">
+                <div class="m-de-h1">
+                    <h1><%= detail.name %></h1>
+                </div>
+                <div class="m-de-in">
+                    <p class="m-de-price">总需<i><%= detail.price %></i>人次</p>
+                    <div class="m-de-pg">
+                        <div class="u-pg">
+                            <div class="u-pg-bar" style="width: <%= (detail.price_now / detail.price).toFixed(4) * 100 %>%"></div>
+                        </div>
+                        <ul class="u-pg-txt">
+                            <li class="f-fl">
+                                <p><b class="m-de-p"><%= detail.price_now %></b></p>
+                                <p>已参与人数</p>
+                            </li>
+                            <li class="f-fr f-tar">
+                                <p><b class="m-de-p"><%= detail.price_need %></b></p>
+                                <p>剩余人数</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="m-de-pg-txt">
+                        <b class="txt-blue"><%= detail.price_now %></b>人次已参与，赶快去参加吧！
+                        剩余<b class="txt-red"><%= detail.price_need %></b>人次
+                    </div>
+                    <div class="m-de-num">
+                        参与人次
+                        <div class="u-as j-as">
+                            <button type="button" class="u-btn u-b-white sub j-as-btn" data-v="-1">-</button><input type="text" value="1" name="num" id="num"/><button type="button" class="u-btn u-b-white add j-as-btn" data-v="1">+</button>
+                        </div>
+
+                        加大参与人次，夺宝在望！
+                    </div>
+                    <div class="m-de-btn">
+                        <button class="u-btn u-b-red" id="sub" data-id="<%= detail._id %>">立即夺宝</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="side">
+            <div class="m-de-per-hd">开奖信息</div>
+            <div class="m-de-per-bd"></div>
+        </div>
+
+    </div>
+    <div class="m-de-list">
+        <% _.each(detail.detail, function(img){%>
+            <img src="<%= img %>" />
+        <% }) %>
+    </div>
+
+
     <form action="/api/luck" method="post" class="j-form">
         <div class="u-as j-as">
             <button type="button" class="u-btn u-b-white sub j-as-btn" data-v="-1">-</button><input type="text" value="1" name="num" id="num"/><button type="button" class="u-btn u-b-white add j-as-btn" data-v="1">+</button>
@@ -18,9 +101,7 @@
 
         <button type="submit" class="u-btn u-b-white" id="sub" data-id="<%= detail._id %>">提交</button>
     </form>
-    <% _.each(detail.detail, function(img){%>
-        <img src="<%= img %>" />
-    <% }) %>
+
 </div>
 
 <% include ./mod/mod.foot.ejs %>
