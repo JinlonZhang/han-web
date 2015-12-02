@@ -50,8 +50,7 @@ _.extend(mod.api, {
             baby: function(fn){
                 Baby.getById(baby_id, fn);
             },
-            add:['user', 'baby', function(fn, d){
-                o.season = d.baby.season;
+            real_num: ['user', 'baby', function(fn, d){
                 var r = num;
                 if(d.user.rmb <= 0) return fn(null, {rmbOut: 1});
 
@@ -60,6 +59,16 @@ _.extend(mod.api, {
                 }else if(d.baby.number_list.length - num <= 0){
                     r = d.baby.number_list.length;
                 }
+                fn(null ,r);
+            }],
+            luck_add: ['real_num', function(fn, d){
+                //TODO luck add;
+                fn();
+            }],
+            add:['user', 'baby', 'real_num', function(fn, d){
+                var r = d.real_num;
+
+                o.season = d.baby.season;
 
                 async.eachSeries(_.range(0, r), function(item, fn1){
                     //顺序执行
@@ -73,7 +82,7 @@ _.extend(mod.api, {
                             d.baby.hot++;
                             d.baby.save(fn2);
                         },
-                        luck: function(fn2){ Luck.add(o, fn2); },
+                        luck: function(fn2){ Luck.add(o, fn2); }, //TODO edit luck.
                         luckGroup: function(fn2){
                             LuckGroup.getByOne(user_id, baby_id, o.season, function(err, lg){
                                 if(lg == null){
