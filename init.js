@@ -28,7 +28,7 @@ _.extend(mod, {
         console.log(random);
         process.exit(0);*/
 
-        Baby.getById('VkzK1CQQx', function(err, o){
+        Baby.getById('4yxjCtX7e', function(err, o){
             var arr = _.range(1, o.price+1);
             o.number_list = arr;
             o.price_need = o.price;
