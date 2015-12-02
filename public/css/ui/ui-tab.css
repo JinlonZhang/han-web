@@ -1,0 +1,6 @@
+
+.u-tab{}
+.u-tab-hd{height: 38px;line-height:34px;font-size:16px;color:#3c3c3c;background:#f2f2f2;font-family: "Microsoft Yahei";font-weight: bold;border: 1px solid #ddd;border-left:0;overflow: visible;}
+.u-tab-item{padding: 0 50px;line-height: 38px;float:left;margin-right: -1px;border:#ddd 1px solid;border-top:0;border-bottom:0;cursor: pointer}
+.u-tab-item.now{border-top:3px solid #DB3752;line-height: 36px;background: #fff;}
+.u-tab-bd{padding: 20px 0;border:#ddd 1px solid;border-top:0;}

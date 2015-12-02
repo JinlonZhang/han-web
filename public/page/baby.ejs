@@ -87,21 +87,23 @@
         </div>
 
     </div>
-    <div class="m-de-list">
-        <% _.each(detail.detail, function(img){%>
-            <img src="<%= img %>" />
-        <% }) %>
-    </div>
+</div>
 
-
-    <form action="/api/luck" method="post" class="j-form">
-        <div class="u-as j-as">
-            <button type="button" class="u-btn u-b-white sub j-as-btn" data-v="-1">-</button><input type="text" value="1" name="num" id="num"/><button type="button" class="u-btn u-b-white add j-as-btn" data-v="1">+</button>
+<div class="g-bd g-wp">
+    <div class="u-tab">
+        <div class="u-tab-hd">
+            <div id="intor" class="u-tab-item now">商品详情</div>
+            <div id="record" class="u-tab-item">所有参与记录</div>
+            <div id="share" class="u-tab-item">晒单</div>
         </div>
-
-        <button type="submit" class="u-btn u-b-white" id="sub" data-id="<%= detail._id %>">提交</button>
-    </form>
-
+        <div class="u-tab-bd">
+            <div class="u-tab-panel">
+                <% _.each(detail.detail, function(img){%>
+                <img src="<%= img %>" />
+                <% }) %>
+            </div>
+        </div>
+    </div>
 </div>
 
 <% include ./mod/mod.foot.ejs %>
