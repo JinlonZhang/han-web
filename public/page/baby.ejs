@@ -27,7 +27,8 @@
         .m-de-per-hd{height: 40px;line-height:40px;font-size: 18px;padding-left: 20px;}
         .m-de-per-bd{height: 510px;margin: 0 10px 9px;background: #fff url('/img/detail-wait.png') center bottom no-repeat;}
 
-        .m-de-list img{float: left;width: 100%;}
+        .m-de-intor{text-align: center;}
+        .m-de-intor img{margin:0 auto;}
     </style>
 </head>
 <body>
@@ -92,16 +93,20 @@
 <div class="g-bd g-wp">
     <div class="u-tab">
         <div class="u-tab-hd">
-            <div id="intor" class="u-tab-item now">商品详情</div>
-            <div id="record" class="u-tab-item">所有参与记录</div>
-            <div id="share" class="u-tab-item">晒单</div>
+            <div id="intor" class="u-tab-item j-tab-item now">商品详情</div>
+            <div id="record" class="u-tab-item j-tab-item">所有参与记录</div>
+            <div id="share" class="u-tab-item j-tab-item">晒单</div>
         </div>
-        <div class="u-tab-bd">
-            <div class="u-tab-panel">
+        <div class="u-tab-bd f-cb">
+            <div id="intorPanel" class="m-de-intor">
                 <% _.each(detail.detail, function(img){%>
-                <img src="<%= img %>" />
+                    <img src="<%= img %>" />
                 <% }) %>
             </div>
+            <div id="recordPanel" class="m-de-record">
+                111
+            </div>
+
         </div>
     </div>
 </div>
@@ -114,6 +119,9 @@
             id: '<%= detail._id %>'
         });
     })
+</script>
+<script type="text/template" id="tpl_record">
+
 </script>
 </body>
 </html>

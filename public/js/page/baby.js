@@ -29,7 +29,21 @@ define(function(require){
 
             $('#sub').click(function(){
                 w.submit();
-            })
+            });
+
+            $('.j-tab-item').click(function(){
+                w.tabClick( $(this) );
+            });
+
+            $('#record').click(function(){
+
+            });
+        },
+
+        tabClick: function(dom){
+            $('.j-tab-item').removeClass('now');
+
+            dom.addClass('now');
         },
 
         submit: function(){
