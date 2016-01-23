@@ -19,7 +19,6 @@ define(function(require){
             true,
             {},
             opt || {},
-            data.opt || {},
             JSON.parse( (w.el && w.el.attr("opt")) || "{}"),
             w.el && w.el.data("opt") || {}
         );

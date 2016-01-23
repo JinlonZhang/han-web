@@ -4,6 +4,7 @@
 
 define(function(require){
     var util = require('../app/util');
+    var tab = require('../ui/tab');
 
     var obj = {};
 
@@ -31,19 +32,20 @@ define(function(require){
                 w.submit();
             });
 
-            $('.j-tab-item').click(function(){
-                w.tabClick( $(this) );
+            w.tab = new tab({
+                el: $('#tab')
             });
 
-            $('#record').click(function(){
 
+            $('#record').click(function(){
+                w.recordClick();
             });
         },
 
-        tabClick: function(dom){
-            $('.j-tab-item').removeClass('now');
+        recordClick: function(){
+            var w = this;
 
-            dom.addClass('now');
+
         },
 
         submit: function(){

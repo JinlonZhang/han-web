@@ -91,22 +91,21 @@
 </div>
 
 <div class="g-bd g-wp">
-    <div class="u-tab">
+    <div class="u-tab" id="tab">
         <div class="u-tab-hd">
-            <div id="intor" class="u-tab-item j-tab-item now">商品详情</div>
+            <div id="intor" class="u-tab-item j-tab-item">商品详情</div>
             <div id="record" class="u-tab-item j-tab-item">所有参与记录</div>
             <div id="share" class="u-tab-item j-tab-item">晒单</div>
         </div>
         <div class="u-tab-bd f-cb">
-            <div id="intorPanel" class="m-de-intor">
+            <div id="intorPanel" class="m-de-intor j-tab-panel">
                 <% _.each(detail.detail, function(img){%>
                     <img src="<%= img %>" />
                 <% }) %>
             </div>
-            <div id="recordPanel" class="m-de-record">
-                111
-            </div>
+            <div id="recordPanel" class="m-de-record j-tab-panel">
 
+            </div>
         </div>
     </div>
 </div>
@@ -121,7 +120,7 @@
     })
 </script>
 <script type="text/template" id="tpl_record">
-
+    {%= list %}
 </script>
 </body>
 </html>
